@@ -8,6 +8,7 @@ import static java.lang.System.*;
 public class Perfect
 {
    private int number;
+   private int sum;
 
 	public Perfect() {
 		number = 0;
@@ -16,17 +17,25 @@ public class Perfect
 	
 	public Perfect(int passedNum) {
 		number = passedNum;
-		this.isPerfect();
+		if(this.isPerfect()) {
+			System.out.println(number + " is perfect.");
+		} else {
+			System.out.println(number + " is not perfect.");
+		}
 	}
 
 
 	public boolean isPerfect()
 	{
-		for() {
-			
+		for(int i = 1; i<number/2;i++) {
+			if(number % i == 0) {
+				//add I to sum
+				sum+=i;
+			}
 		}
-		if(true) {
-			
+		//System.out.println("\n" + sum);
+		if(sum*2==number) {
+			return true;
 		}
 		return false;
 	}
