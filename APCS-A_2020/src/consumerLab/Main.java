@@ -20,7 +20,7 @@ class Main {
 		
 		System.out.println(Review.fakeReview("src/consumerLab/simpleReview.txt"));
 		
-		//for git
+		
 		/*
 		 * try { Scanner input = new Scanner(new
 		 * File("src/consumerLab/positiveAdjectives.txt")); while (input.hasNextLine())

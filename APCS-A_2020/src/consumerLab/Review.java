@@ -177,7 +177,7 @@ public class Review {
 	// This method makes reviews more strong.
 	public static String fakeReview(String fileName) {
 		String fileContents = textToString(fileName);
-		// System.out.println("Review Sentiment: " + totalSentiment(fileName));
+		System.out.println("Review Sentiment: " + totalSentiment(fileName));
 		int startString = 0;
 		int cutoff = 1;
 		if (totalSentiment(fileName) > cutoff) {
@@ -194,6 +194,8 @@ public class Review {
 								fileContents = fileContents.replaceFirst(fileContents.substring(startString, i),
 										randomPositiveAdj());
 								startString = 0;
+							} else {
+								//System.out.println("Not negative, no need to replace " + i);
 							}
 						}
 					}
@@ -224,6 +226,8 @@ public class Review {
 								fileContents = fileContents.replaceFirst(fileContents.substring(startString, i),
 										randomNegativeAdj());
 								startString = 0;
+							} else {
+								//System.out.println("Not positive, no need to replace " + i);
 							}
 						}
 					}
@@ -272,7 +276,7 @@ public class Review {
 					startString = i + 1;
 				}
 			} catch (Exception e) {
-				// System.out.println("caught!");
+				System.out.println("caught!");
 			}
 
 		}
