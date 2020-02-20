@@ -36,7 +36,7 @@ public class Review {
 			Scanner input = new Scanner(new File("src/consumerLab/positiveAdjectives.txt"));
 			while (input.hasNextLine()) {
 				String temp = input.nextLine().trim();
-				System.out.println(temp);
+				// System.out.println(temp);
 				posAdjectives.add(temp);
 			}
 			input.close();
@@ -138,6 +138,114 @@ public class Review {
 		}
 	}
 
+	// OLD METHOD - HAS BEEN UPDATED TO INSTEAD STRENGTHEN THE SENTIMENT OF THE
+	// REVIEW
+	public static String oldFakeReview(String fileName) {
+		String fileContents = textToString(fileName);
+		int startString = 0;
+		for (int i = 0; i < fileContents.length(); i++) {
+			try {
+				if (fileContents.charAt(i) == '*') {
+					startString = i + 1;
+
+				}
+				if (startString > 0) {
+					if (fileContents.charAt(i) == ' ') {
+						fileContents = fileContents.replaceFirst(fileContents.substring(startString, i),
+								randomAdjective());
+						startString = 0;
+					}
+				}
+			} catch (Exception e) {
+				System.out.println("caught3");
+			}
+		}
+
+		for (int i = 0; i < fileContents.length(); i++) {
+			try {
+				if (fileContents.charAt(i) == '*') {
+					fileContents = fileContents.substring(startString, i).concat(fileContents.substring(i + 1));
+				}
+			} catch (Exception e) {
+				System.out.println("caught4");
+			}
+		}
+
+		return fileContents;
+	}
+
+	// This method makes reviews more strong.
+	public static String fakeReview(String fileName) {
+		String fileContents = textToString(fileName);
+		// System.out.println("Review Sentiment: " + totalSentiment(fileName));
+		int startString = 0;
+		int cutoff = 1;
+		if (totalSentiment(fileName) > cutoff) {
+
+			for (int i = 0; i < fileContents.length(); i++) {
+				try {
+					if (fileContents.charAt(i) == '*') {
+						startString = i + 1;
+
+					}
+					if (startString > 0) {
+						if (fileContents.charAt(i) == ' ') {
+							if (sentimentVal(fileContents.substring(startString, i)) < 0) {
+								fileContents = fileContents.replaceFirst(fileContents.substring(startString, i),
+										randomPositiveAdj());
+								startString = 0;
+							}
+						}
+					}
+				} catch (Exception e) {
+					System.out.println("caught1");
+				}
+			}
+
+			for (int i = 0; i < fileContents.length(); i++) {
+				try {
+					if (fileContents.charAt(i) == '*') {
+						fileContents = fileContents.substring(startString, i).concat(fileContents.substring(i + 1));
+					}
+				} catch (Exception e) {
+					System.out.println("caught2");
+				}
+			}
+		} else if (totalSentiment(fileName) < cutoff) {
+			for (int i = 0; i < fileContents.length(); i++) {
+				try {
+					if (fileContents.charAt(i) == '*') {
+						startString = i + 1;
+
+					}
+					if (startString > 0) {
+						if (fileContents.charAt(i) == ' ') {
+							if (sentimentVal(fileContents.substring(startString, i)) > 0) {
+								fileContents = fileContents.replaceFirst(fileContents.substring(startString, i),
+										randomNegativeAdj());
+								startString = 0;
+							}
+						}
+					}
+				} catch (Exception e) {
+					System.out.println("caught5");
+				}
+			}
+			startString = 0;
+			for (int i = 0; i < fileContents.length(); i++) {
+				try {
+					if (fileContents.charAt(i) == '*') {
+						//System.out.println(i);
+						fileContents = fileContents.substring(startString, i).concat(fileContents.substring(i + 1));
+					}
+				} catch (Exception e) {
+					System.out.println("caught6");
+				}
+			}
+		}
+		return fileContents;
+	}
+
 	/**
 	 * Activity 2: totalSentiment() Write the code to total up the sentimentVals of
 	 * each word in a review.
@@ -153,22 +261,23 @@ public class Review {
 		int startString = 0;
 		System.out.println();
 		for (int i = 0; i < fileContents.length(); i++) {
-			if (fileContents.charAt(i) == ' ') {
-				sentimentTotal += sentimentVal(fileContents.substring(startString, i));
-				try {
-					if (fileContents.charAt(i - 1) == '.' || fileContents.charAt(i - 1) == '!'
-							|| fileContents.charAt(i - 1) == ',' || fileContents.charAt(i - 1) == ':'
-							|| fileContents.charAt(i - 1) == '/' || fileContents.charAt(i - 1) == '('
-							|| fileContents.charAt(i - 1) == ')') {
-						sentimentTotal += sentimentVal(fileContents.substring(startString, i - 1));
-					}
-				} catch (Exception e) {
-					// System.out.println("exception saved!");
+			// if (fileContents.charAt(i) == ' ') {
+			// sentimentTotal += sentimentVal(fileContents.substring(startString, i));
+			try {
+				if (fileContents.charAt(i) == ' ' || fileContents.charAt(i) == '.' || fileContents.charAt(i) == '!'
+						|| fileContents.charAt(i) == ',' || fileContents.charAt(i) == ':'
+						|| fileContents.charAt(i) == '/' || fileContents.charAt(i) == '('
+						|| fileContents.charAt(i) == ')' || fileContents.charAt(i) == '*') {
+					sentimentTotal += sentimentVal(fileContents.substring(startString, i));
+					startString = i + 1;
 				}
-				startString = i + 1;
+			} catch (Exception e) {
+				// System.out.println("caught!");
 			}
 
 		}
+
+		// }
 		// find each word
 		// add in its sentimentVal
 		// set the file contents to start after this word
