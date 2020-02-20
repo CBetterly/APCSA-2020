@@ -246,7 +246,7 @@ public class Review {
 		return fileContents;
 	}
 
-	/**
+	/** 
 	 * Activity 2: totalSentiment() Write the code to total up the sentimentVals of
 	 * each word in a review.
 	 */
