@@ -21,7 +21,8 @@ public class RockPaperScissors
 		if(playChoice == 'R' || playChoice == 'P' || playChoice == 'S') {
 			
 		} else {
-			System.out.println("bruh thats not a valid choice");
+			System.out.println("bruh thats not a valid choice, defaulting to paper.");
+			
 		}
 	}
 
