@@ -21,8 +21,18 @@ public class Triples {
 
 	private int greatestCommonFactor(int a, int b, int c) {
 		int max = 0;
+		int i = 1;
 
-		return 1;
+		while (i < a && i < b && i < c) {
+			if (a % i == 0 && b % i == 0 && c % i == 0) {
+				max = i;
+				i++;
+			} else {
+				i++;
+			}
+		}
+
+		return max;
 	}
 
 	public void printTriples() {
@@ -33,31 +43,35 @@ public class Triples {
 		double c2 = 1.0;
 
 		// for all possible c values
-		//System.out.println("boutta start");
+		// System.out.println("boutta start");
 		for (; c <= maxNumber;) {
-			//System.out.println("one");
+			// System.out.println("one");
 			// for all possible a and b values
 			for (; a < maxNumber;) {
-				//System.out.println("two " + a + " " + b + " " + c);
+				// System.out.println("two " + a + " " + b + " " + c);
 				for (; b < maxNumber;) {
 
 					c2 = Math.sqrt((a * a) + (b * b));
-					//System.out.println(c2);
+					// System.out.println(c2);
 					if (c2 > (int) c2) {
-						
-					} else if((a+b)%2 == 1){
-						if (a<b) {/* greatestCommonFactor(a,b,c)<=1 */
-							System.out.println(a + "  " + b + "  " + (int)c2);
+
+					} else if ((a + b) % 2 == 1) {
+						if (a < b) {
+							c = (int) c2;
+							if (greatestCommonFactor(a, b, c) <= 1) {
+								// System.out.println(greatestCommonFactor(a, b, c));
+								System.out.println(a + "  " + b + "  " + (int) c2);
+							}
 						}
 					}
 					b++;
-				} b = 1;
+				}
+				b = 1;
 				a++;
 
 			}
 			break;
 		}
-
 	}
 
 	public String toString() {
