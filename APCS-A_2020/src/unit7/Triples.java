@@ -33,19 +33,21 @@ public class Triples {
 		double c2 = 1.0;
 
 		// for all possible c values
-		System.out.println("boutta start");
+		//System.out.println("boutta start");
 		for (; c <= maxNumber;) {
-			// System.out.println("one");
+			//System.out.println("one");
 			// for all possible a and b values
 			for (; a < maxNumber;) {
-				System.out.println("two " + a + " " + b + " " + c);
+				//System.out.println("two " + a + " " + b + " " + c);
 				for (; b < maxNumber;) {
 
 					c2 = Math.sqrt((a * a) + (b * b));
-					System.out.println(c2);
+					//System.out.println(c2);
 					if (c2 > (int) c2) {
-						if (true) {/* greatestCommonFactor(a,b,c)<=1 */
-							System.out.println(a + "  " + b + "  " + c);
+						
+					} else if((a+b)%2 == 1){
+						if (a<b) {/* greatestCommonFactor(a,b,c)<=1 */
+							System.out.println(a + "  " + b + "  " + (int)c2);
 						}
 					}
 					b++;
@@ -53,7 +55,7 @@ public class Triples {
 				a++;
 
 			}
-
+			break;
 		}
 
 	}
