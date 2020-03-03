@@ -1,4 +1,8 @@
 package elevensLab;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This class provides a convenient way to test shuffling methods.
  */
@@ -13,7 +17,7 @@ public class Shuffler {
 	/**
 	 * The number of values to shuffle.
 	 */
-	private static final int VALUE_COUNT = 4;
+	private static final int VALUE_COUNT = 52;
 
 	/**
 	 * Tests shuffling methods.
@@ -60,8 +64,25 @@ public class Shuffler {
 	 * the cards in one half with the cards in the other.
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
-	public static void perfectShuffle(int[] values) {
+	public static void perfectShuffle(int[] cards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		//Card[] cards = new Card[52];
+		int[] shuffled = new int[cards.length];
+		int k = 0;
+		int j = 0;
+		for(j = 0; j <= 25; j++) {
+			shuffled[k] = cards[j];
+			k+=2;
+		}
+		k=1;
+		for(j=26; j <= 51; j++) {
+			shuffled[k] = cards[j];
+			k+=2;
+		}
+		
+		for(int i = 0; i < cards.length; i++) {
+			cards[i] = shuffled[i];
+		}
 	}
 
 	/**
@@ -75,7 +96,26 @@ public class Shuffler {
 	 * searching for an as-yet-unselected card.
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
-	public static void selectionShuffle(int[] values) {
+	public static void selectionShuffle(int[] cards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		//int[] shuffled = new int[52];
+		for(int k = 51; k >= 1; k--) {
+			int randInt = (int) ((k+1)*Math.random());
+			int tempCard = cards[k];
+			cards[k] = cards[randInt];
+			cards[randInt] = tempCard;
+		}
+	}
+	
+	public static List<Card> cardSelectionShuffle(List<Card> cards) {
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		//int[] shuffled = new int[52];
+		for(int k = 51; k >= 1; k--) {
+			int randInt = (int) ((k+1)*Math.random());
+			Card tempCard = cards.get(k);
+			cards.set(k, cards.get(randInt));
+			cards.set(randInt, tempCard);
+		}
+		return cards;
 	}
 }

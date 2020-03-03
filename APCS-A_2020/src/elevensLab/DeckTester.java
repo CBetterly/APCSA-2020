@@ -53,5 +53,13 @@ public class DeckTester {
 		System.out.println("  deal: " + d.dealCard());
 		System.out.println();
 		System.out.println();
+		
+		Deck d2 = new Deck();
+		d2.shuffle();
+		System.out.println(d2);
+		for(Card bruh: d2.getCards()) {
+			System.out.println(bruh);
+		}
+		
 	}
 }

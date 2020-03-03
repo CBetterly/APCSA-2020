@@ -16,6 +16,7 @@ public class Deck {
 	public static String[] SUITS = "CLUBS HEARTS DIAMONDS SPADES".split(" ");
 
 	private List<Card> cards;
+	private List<Card> createdCards = new ArrayList<Card>();
 	private int top;
 
 	// make a Deck constructor
@@ -29,6 +30,7 @@ public class Deck {
 				cards.add(new Card(SUITS[j], i));
 			}
 		}
+		createdCards = cards;
 	}
 
 	public Deck(String[] ranks, String[] suits2, int[] pointValues) {
@@ -39,6 +41,7 @@ public class Deck {
 				cards.add(new Card(suits2[j], i));
 			}
 		}
+		createdCards.addAll(cards);
 	}
 
 	// loop through all suits
@@ -53,15 +56,18 @@ public class Deck {
 			//top++;
 			return tempCard;
 		} catch(Exception e) {
-			System.out.println("WARNING: Deck ran out, starting again from top with standard deck");
+			System.out.println("WARNING: Deck ran out, starting again from top with a shuffled version of the original deck");
 			
 			top = 0;
+			cards = createdCards;
+			
+			/*
 			for (int j = 0; j < 4; j++) {
 				for (int i = 1; i < Card.FACES.length; i++) {
 					cards.add(new Card(SUITS[j], i));
 				}
 			}
-			
+			*/
 			shuffle();
 			
 			Card tempCard = cards.get(top);
@@ -69,10 +75,6 @@ public class Deck {
 			//top++;
 			return tempCard;
 		}
-	}
-	
-	private void dealCard2() {
-		
 	}
 
 	public void resetAfterDeal() {
@@ -83,8 +85,9 @@ public class Deck {
 	// use Colletions.shuffle
 	// reset the top card
 	public void shuffle() {
-		// Shuffler.main(null);
+		
 		Collections.shuffle(cards);
+		//cards = Shuffler.cardSelectionShuffle(cards);
 	}
 
 	public boolean isEmpty() {
@@ -92,6 +95,10 @@ public class Deck {
 			return true;
 		}
 		return false;
+	}
+	
+	public List<Card> getCards(){
+		return cards;
 	}
 
 	public int size() {

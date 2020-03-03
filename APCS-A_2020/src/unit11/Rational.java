@@ -8,9 +8,19 @@ import static java.lang.System.*;
 class Rational implements Comparable<Rational>
 {
 	//add two instance variables
+	private int numerator;
+	private int denominator;
 
 	//write two constructors
-
+	public Rational() {
+		numerator = 1;
+		denominator = 2;
+	}
+	
+	public Rational(int num, int denom) {
+		numerator = num;
+		denominator = denom;
+	}
 
 	//write a setRational method
 	
