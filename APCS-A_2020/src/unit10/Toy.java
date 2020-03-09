@@ -9,7 +9,7 @@ public class Toy
 {
 	private String name;
 	private int count;
-
+	
 	public Toy()
 	{
 		name = "unnamed toy";
