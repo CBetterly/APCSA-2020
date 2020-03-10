@@ -44,6 +44,6 @@ public class Toy
 
 	public String toString()
 	{
-	   return "This is a(n) " + name + ". There is/are " + count + " left in stock.";
+	   return name + " " + count;
 	}
 }

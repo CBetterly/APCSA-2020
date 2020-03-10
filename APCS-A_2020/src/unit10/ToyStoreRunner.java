@@ -16,5 +16,6 @@ public class ToyStoreRunner
 		asdf.myName();
 		asdf.loadToys("sorry bat sorry sorry sorry train train teddy teddy ball ball");
 		System.out.println(asdf);
+		System.out.println( "Most Frequent: " + asdf.getMostFrequentToy() );	
 	}
 }
