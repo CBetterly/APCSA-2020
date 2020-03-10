@@ -14,6 +14,7 @@ public class Celebrity
 	 * The answer or name of the celebrity.
 	 */
 	private String celebName;
+	private String occupation;
 	
 	/**
 	 * Creates a Celebrity instance with the supplied answer and clue
@@ -24,6 +25,13 @@ public class Celebrity
 	{
 		celebName = answer;
 		celebClue = clue;
+	}
+	
+	public Celebrity(String answer, String clue, String occup)
+	{
+		celebName = answer;
+		celebClue = clue;
+		occupation = occup;
 	}
 
 	/**
