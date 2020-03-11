@@ -134,7 +134,10 @@ public class CelebrityGame
 	 */
 	public String sendClue()
 	{
-		return null;
+		if(celebGameList.size() != 0) {
+			return celebGameList.get(0).getClue();
+		}
+		return "Out of celebrities";
 	}
 
 	/**
@@ -145,6 +148,6 @@ public class CelebrityGame
 	 */
 	public String sendAnswer()
 	{
-		return null;
+		return celebGameList.get(0).getAnswer();
 	}
 }

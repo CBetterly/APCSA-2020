@@ -12,7 +12,8 @@ public class CelebrityRunner
 	 */
 	public static void main(String [] args)
 	{
-		Celebrity george = new Celebrity("George","robotsandcancer");
-		System.out.println(george);
+		//Celebrity george = new Celebrity("George","robotsandcancer");
+		CelebrityGame test = new CelebrityGame();
+		//System.out.println(george);
 	}
 }

@@ -45,6 +45,7 @@ public class StartPanel extends JPanel
 	 * RadioButton for the Celebrity type.
 	 */
 	private JRadioButton literatureRadio;
+	private JRadioButton athleteRadio;
 	
 	/**
 	 * Customize the JRadioButton for the class created sub class
@@ -89,6 +90,7 @@ public class StartPanel extends JPanel
 	 * String to populate the clueLabel if Literature Celebrity is picked.
 	 */
 	private String literatureClue;
+	private String athleteClue;
 
 	/**
 	 * String to populate the clueLabel if Class Generated Celebrity is picked.
@@ -122,12 +124,14 @@ public class StartPanel extends JPanel
 		this.typeGroup = new ButtonGroup();
 		this.celebrityRadio = new JRadioButton("Celebrity");
 		this.literatureRadio = new JRadioButton("Literature Celebrity");
+		this.athleteRadio = new JRadioButton("Athlete Celebrity");
 		this.celebrityClue = "Enter the clue for the celebrity";
 		this.literatureClue = "Enter the clues for the literature celeb separated by commas";
+		this.athleteClue = "Enter the clues for the athlete celeb separated by commas";
 		this.clueLabel = new JLabel(celebrityClue);
 		
-		this.answerField = new JTextField("Type celebrity here (4 letters minimum thx Cher)");
-		this.clueField = new JTextField("Enter celebrity clue here (10 letters minimum)");
+		this.answerField = new JTextField("Type celebrity here (4 letters minimum, not blaming anyone tho)");
+		this.clueField = new JTextField("Enter celebrity clue here (10 letters minimum, give good clue)");
 		this.addCelebrityButton = new JButton("Add current celebrity");
 		this.startButton = new JButton("Start Celebrity game");
 		this.celebrityCount = 0;
@@ -160,8 +164,9 @@ public class StartPanel extends JPanel
 		{
 			validClue = controller.validateClue(clueText, "Literature");
 		}
-		else
-		{
+		else if(athleteRadio.isSelected()){
+			validClue = controller.validateClue(clueText, "Athlete");
+		} else {
 			validClue = controller.validateClue(clueText, "");
 		}
 
@@ -183,6 +188,7 @@ public class StartPanel extends JPanel
 		this.add(clueLabel);
 		this.add(celebrityRadio);
 		this.add(literatureRadio);
+		this.add(athleteRadio);
 		this.add(answerField);
 		this.add(clueField);
 		this.add(startButton);
@@ -194,6 +200,7 @@ public class StartPanel extends JPanel
 		startButton.setEnabled(false);
 		typeGroup.add(celebrityRadio);
 		typeGroup.add(literatureRadio);
+		typeGroup.add(athleteRadio);
 
 	}
 
@@ -216,6 +223,10 @@ public class StartPanel extends JPanel
 		panelLayout.putConstraint(SpringLayout.EAST, celebrityCountLabel, -45, SpringLayout.EAST, this);
 
 		//Put your custom radio button info here
+//		panelLayout.putConstraint(SpringLayout.NORTH, literatureRadio, 10, SpringLayout.SOUTH, athleteRadio);
+//		panelLayout.putConstraint(SpringLayout.WEST, athleteRadio, 0, SpringLayout.WEST, celebrityRadio);
+//		panelLayout.putConstraint(SpringLayout.NORTH,athleteRadio, 10, SpringLayout.SOUTH, celebrityRadio);
+//		panelLayout.putcon
 		
 		panelLayout.putConstraint(SpringLayout.NORTH, literatureRadio, 10, SpringLayout.SOUTH, celebrityRadio);
 		panelLayout.putConstraint(SpringLayout.WEST, literatureRadio, 0, SpringLayout.WEST, celebrityRadio);
@@ -276,6 +287,7 @@ public class StartPanel extends JPanel
 		 */
 		literatureRadio.addActionListener(select -> clueLabel.setText(literatureClue));
 		celebrityRadio.addActionListener(select -> clueLabel.setText(celebrityClue));
+		athleteRadio.addActionListener(select -> clueLabel.setText(athleteClue));
 
 	}
 	
@@ -293,6 +305,10 @@ public class StartPanel extends JPanel
 		if (literatureRadio.isSelected())
 		{
 			type = "Literature";
+		}
+		if (athleteRadio.isSelected())
+		{
+			type = "Athlete";
 		}
 		String answer = answerField.getText().trim();
 		String clue = clueField.getText().trim();

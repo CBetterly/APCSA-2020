@@ -293,7 +293,7 @@ public class CelebrityPanel extends JPanel
 		if (controller.processGuess(currentGuess))
 		{
 			clueArea.append(success + controller.sendClue());
-			clueArea.setBackground(Color.CYAN);
+			clueArea.setBackground(Color.GREEN);
 		}
 		else
 		{
