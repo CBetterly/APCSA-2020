@@ -312,5 +312,9 @@ public class CelebrityPanel extends JPanel
 		clueArea.setCaretPosition(clueArea.getDocument().getLength());
 
 	}
+	
+	public void outOfCelebs() {
+		clueArea.append("\nOut of celebs! The game is over!");
+	}
 
 }

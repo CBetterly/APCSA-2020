@@ -52,6 +52,12 @@ public class CelebrityGame
 	public boolean processGuess(String guess)
 	{
 		if(guess.trim().equalsIgnoreCase(gameCelebrity.getAnswer().trim())) {
+			celebGameList.remove(0);
+			try {
+			gameCelebrity = celebGameList.get(0);
+			} catch(Exception e) {
+				//CelebrityPanel.outOfCelebs();
+			}
 			return true;
 		}
 		return false;

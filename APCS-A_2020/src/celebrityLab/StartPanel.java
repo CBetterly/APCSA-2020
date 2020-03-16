@@ -224,11 +224,11 @@ public class StartPanel extends JPanel
 
 		//Put your custom radio button info here
 //		panelLayout.putConstraint(SpringLayout.NORTH, literatureRadio, 10, SpringLayout.SOUTH, athleteRadio);
-//		panelLayout.putConstraint(SpringLayout.WEST, athleteRadio, 0, SpringLayout.WEST, celebrityRadio);
-//		panelLayout.putConstraint(SpringLayout.NORTH,athleteRadio, 10, SpringLayout.SOUTH, celebrityRadio);
+		panelLayout.putConstraint(SpringLayout.WEST, athleteRadio, 0, SpringLayout.WEST, celebrityRadio);
+		panelLayout.putConstraint(SpringLayout.NORTH,athleteRadio, 10, SpringLayout.SOUTH, celebrityRadio);
 //		panelLayout.putcon
 		
-		panelLayout.putConstraint(SpringLayout.NORTH, literatureRadio, 10, SpringLayout.SOUTH, celebrityRadio);
+		panelLayout.putConstraint(SpringLayout.NORTH, literatureRadio, 10, SpringLayout.SOUTH, athleteRadio);//changed
 		panelLayout.putConstraint(SpringLayout.WEST, literatureRadio, 0, SpringLayout.WEST, celebrityRadio);
 
 		panelLayout.putConstraint(SpringLayout.NORTH, clueLabel, 10, SpringLayout.SOUTH, answerField);
