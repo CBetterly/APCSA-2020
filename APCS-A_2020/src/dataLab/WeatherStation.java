@@ -33,4 +33,8 @@ public class WeatherStation {
       return this.state.equals(st);
    }
    
+   public double getLat() {
+	   return this.lat;
+   }
+   
 }

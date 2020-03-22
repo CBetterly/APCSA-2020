@@ -17,12 +17,24 @@ public class Welcome03_List {
       
       Scanner sc = new Scanner(System.in);
       System.out.println("Enter a state abbreviation: ");
-      String state = sc.next();
+      String state = sc.next().toUpperCase();
       System.out.println("Stations in " + state);
+      int count = 0;
       for (WeatherStation ws : allstns) {
          if (ws.isLocatedInState(state)) {
             System.out.println("  " + ws.getId() + ": " + ws.getName());
+            count++;
          }
       }
+      System.out.println("There are " + count + " stations in " + state.toUpperCase() + ".");
+      
+      
+      WeatherStation lowest = allstns.get(0);
+      for (WeatherStation ws : allstns) {
+          if (ws.getLat()<lowest.getLat()) {
+             lowest = ws;
+          }
+       }
+      System.out.println("The southernmost weather station is " + lowest.getId() + ": " + lowest.getName() + ".");
    }
 }
